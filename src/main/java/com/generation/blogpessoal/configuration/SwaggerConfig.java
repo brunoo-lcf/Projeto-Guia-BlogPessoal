@@ -53,7 +53,7 @@ public class SwaggerConfig {
 		};
 	}
 
-	private ApiResponse createApiResponse(String string) {
-		return null;
+	private ApiResponse createApiResponse(String message) {
+		return new ApiResponse().description(message);
 	}
 }
