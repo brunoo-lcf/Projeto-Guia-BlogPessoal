@@ -1,7 +1,8 @@
 package com.generation.blogpessoal.model;
 
-import java.time.LocalDateTime;
 
+
+import java.time.LocalDateTime;
 
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -16,20 +17,20 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-@Entity//indica que iremos criar uma tablea(entidade)
-@Table(name="tb_postagens")//indica o nome da tabela a ser criada
+@Entity
+@Table(name="tb_postagens")
 public class Postagem {
-	
-	@Id // Indica que este atributo será uma chave primaria na minha tabela
-	@GeneratedValue(strategy = GenerationType.IDENTITY)//indica que tera um auto-increment 
+
+	@Id // indica que este atributo será uma chave primária na minha tabela
+	@GeneratedValue(strategy = GenerationType.IDENTITY)//indica que terá um auto-increment
 	private Long id;
 	
 	@NotBlank(message = "Este atributo é de preenchimento obrigatório")
-	@Size(min = 5, max = 100,message =  "Este atributo deve ter no mínimo 5 caracteres e no máximo 100 caracteres")
+	@Size(min = 5, max=100,message="Este atributo tem que ter no mínimo 5 caracteres e no máximo 100 caracteres")
 	private String titulo;
 	
 	@NotBlank(message = "Este atributo é de preenchimento obrigatório")
-	@Size(min = 10, max = 1000,message =  "Este atributo deve ter no mínimo 10 caracteres e no máximo 1000 caracteres")
+	@Size(min = 10, max=1000,message="Este atributo tem que ter no mínimo 10 caracteres e no máximo 1000 caracteres")
 	private String texto;
 	
 	@UpdateTimestamp
@@ -43,7 +44,7 @@ public class Postagem {
 	@JsonIgnoreProperties("postagem")
 	private Usuario usuario;
 	
-
+	
 	public Usuario getUsuario() {
 		return usuario;
 	}
@@ -51,6 +52,15 @@ public class Postagem {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+
+	public Tema getTema() {
+		return tema;
+	}
+
+	public void setTema(Tema tema) {
+		this.tema = tema;
+	}
+
 
 	public Long getId() {
 		return id;
@@ -83,14 +93,6 @@ public class Postagem {
 	public void setData(LocalDateTime data) {
 		this.data = data;
 	}
-
-	public Tema getTema() {
-		return tema;
-	}
-
-	public void setTema(Tema tema) {
-		this.tema = tema;
-	} 
 	
 	
 }

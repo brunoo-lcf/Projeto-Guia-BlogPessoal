@@ -16,10 +16,12 @@ import io.swagger.v3.oas.models.responses.ApiResponses;
 public class SwaggerConfig {
 
 	@Bean
-	OpenAPI springBlogPessoalAPI() {
+	OpenAPI springBlogPessoalOpenAPI() {
 		return new OpenAPI()
-				.info(new Info().title("Projeto Blog Pessoal")
-						.description("Projeto Pessoal -- Desenvolvido pela Generation").version("versao0.0.1")
+				.info(new Info()
+						.title("Projeto Blog Pessoal")
+						.description("Projeto Pessoal -- Desenvolvido pela Generation Brasil")
+						.version("versao0.0.1")
 						.license(new License()
 								.name("Generation Brasil")
 								.url("https://brazil.generation.org/"))
@@ -29,12 +31,11 @@ public class SwaggerConfig {
 								.email("contatogeneration@generation.org")))
 				.externalDocs(new ExternalDocumentation()
 						.description("GitHub")
-						.url("https://github.com/conteudogeneration/"));
-
+						.url("https://github.com/conteudoGeneration/"));
 	}
 	
 	@Bean
-	OpenApiCustomizer customerGlobalHeaderOpenApiCustomizer(){
+	OpenApiCustomizer customerGlobalHeaderOpenApiCustomizer() {
 		return openApi -> {
 			openApi.getPaths().values().forEach(pathItem -> pathItem.readOperations()
 			.forEach(operation -> {
@@ -54,6 +55,8 @@ public class SwaggerConfig {
 	}
 
 	private ApiResponse createApiResponse(String message) {
+		
 		return new ApiResponse().description(message);
 	}
+	
 }
